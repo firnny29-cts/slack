@@ -12,7 +12,7 @@ def notifySlack(text, channel, attachments) {
         channel: channel,
         username: "Jenkins",
         icon_url: jenkinsIcon,
-        attachments: attachments
+        attachments: attachments,
         message: ${env.JOB_NAME}
     ])
 
