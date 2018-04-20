@@ -13,14 +13,13 @@ def notifySlack(text, channel, attachments) {
         username: "Jenkins",
         icon_url: jenkinsIcon,
         attachments: attachments,
-        message: ${env.JOB_NAME}
-    ])
+        ])
 
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
 }
 
 node {
     stage("Post to Slack") {
-        notifySlack(message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", slackNotificationChannel, [])
+        notifySlack("Success", slackNotificationChannel, [])
     }
 }
