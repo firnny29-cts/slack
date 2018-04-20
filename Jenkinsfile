@@ -6,6 +6,7 @@ def call(String buildStatus = 'STARTED') {
   buildStatus = buildStatus ?: 'SUCCESS'
 def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 def summary = "${subject} (${env.BUILD_URL})"
+}
 def notifySlack(text, channel, summary) {
     def slackURL = 'https://hooks.slack.com/services/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'
     def jenkinsIcon = 'https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png'
@@ -21,7 +22,7 @@ def notifySlack(text, channel, summary) {
 
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
 }
-}
+
 
 node {
     stage("Post to Slack") {
