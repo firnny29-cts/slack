@@ -1,6 +1,9 @@
 import groovy.json.JsonOutput
 
 def slackNotificationChannel = 'general'     // ex: = "builds"
+def call(String buildStatus = 'STARTED') {
+  // build status of null means successful
+  buildStatus = buildStatus ?: 'SUCCESS'
 def subject = "${buildStatus}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'"
 def summary = "${subject} (${env.BUILD_URL})"
 def notifySlack(text, channel, summary) {
@@ -17,6 +20,7 @@ def notifySlack(text, channel, summary) {
 	
 
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
+}
 }
 
 node {
