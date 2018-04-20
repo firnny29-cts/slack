@@ -12,10 +12,10 @@ def notifySlack(text, channel, summary) {
 
     def payload = JsonOutput.toJson([text: text,
         
-		channel: channel,
+	channel: channel,
         username: "Jenkins",
         icon_url: jenkinsIcon,
-        attachments: attachments,
+        summary: summary,
         ])
 	
 
