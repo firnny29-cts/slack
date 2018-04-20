@@ -18,6 +18,6 @@ def notifySlack(text, channel, attachments) {
 
 node {
     stage("Post to Slack") {
-        notifySlack("Success", slackNotificationChannel, [])
+        notifySlack(currentBuild.getPreviousBuild().result, slackNotificationChannel, [])
     }
 }
