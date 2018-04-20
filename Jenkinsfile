@@ -2,7 +2,7 @@ import groovy.json.JsonOutput
 
 def slackNotificationChannel = 'general'     // ex: = "builds"
 
-def notifySlack(text, channel, attachments) {
+def notifySlack(text, channel, text) {
     def slackURL = 'https://hooks.slack.com/services/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'
     def jenkinsIcon = 'https://wiki.jenkins-ci.org/download/attachments/2916393/logo.png'
 
@@ -18,6 +18,6 @@ def notifySlack(text, channel, attachments) {
 
 node {
     stage("Post to Slack") {
-        notifySlack(currentBuild.getPreviousBuild().result, slackNotificationChannel, [])
+        notifySlack(currentBuild.getPreviousBuild().result, slackNotificationChannel, 'Status')
     }
 }
