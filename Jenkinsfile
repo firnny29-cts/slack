@@ -20,6 +20,6 @@ def notifySlack(text, channel, attachments) {
 
 node {
     stage("Post to Slack") {
-        notifySlack("Success!", slackNotificationChannel, [])
+        notifySlack(message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})", slackNotificationChannel, [])
     }
 }
