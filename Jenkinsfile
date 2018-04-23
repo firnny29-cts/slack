@@ -10,8 +10,7 @@ def notifySlack(text, channel, text1, text2) {
         channel: channel,
         username: "Jenkins",
         icon_url: jenkinsIcon,
-        text1: text,
-        text2: text
+        text1: text
         ])
 
     sh "curl -X POST --data-urlencode \'payload=${payload}\' ${slackURL}"
@@ -19,6 +18,6 @@ def notifySlack(text, channel, text1, text2) {
 
 node {
     stage("Post to Slack") {
-        notifySlack("Job is ${BUILD_URL}", slackNotificationChannel, "Status")
+        notifySlack("Job is "${BUILD_URL}"", slackNotificationChannel, "Status")
     }
 }
