@@ -18,6 +18,6 @@ def notifySlack(text, channel, text1) {
 
 node {
     stage("Post to Slack") {
-        notifySlack(currentBuild.getPreviousBuild().result, slackNotificationChannel, "Status")
+        notifySlack($BUILD_URL, slackNotificationChannel, "Status")
     }
 }
