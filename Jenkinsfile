@@ -18,6 +18,6 @@ def notifySlack(text, channel, text1, text2) {
 
 node {
     stage("Post to Slack") {
-        notifySlack(BUILD_URL, slackNotificationChannel, JOB_NAME, "Status")
+        notifySlack(BUILD_URL, JOB_NAME, slackNotificationChannel, JOB_NAME, "Status")
     }
 }
