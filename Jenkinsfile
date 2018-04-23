@@ -20,4 +20,8 @@ node {
     stage("Post to Slack") {
         notifySlack(BUILD_URL, slackNotificationChannel, "Status")
     }
+node {
+    stage("Post to Slack") {
+        notifySlack(BUILD_URLconsole, slackNotificationChannel, "Status")
+    }
 }
